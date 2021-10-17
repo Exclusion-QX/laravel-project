@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\TasksController;
+use App\Http\Controllers\Admin\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
+    Route::get('test', [App\Http\Controllers\Admin\HomeController::class, 'test']);
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
+
+    Route::resource('tasks', TasksController::class);
+
+    // Comments
+    Route::post('{task}/comments', [CommentsController::class, 'store'])->name('comments.store');
+//    Route::get('/comments/{comment}/edit', [CommentsController::class, 'edit'])->name('comments.edit');
+//    Route::put('/comments/{comment}', [CommentsController::class, 'update'])->name('comments.update');
+    Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 });
 

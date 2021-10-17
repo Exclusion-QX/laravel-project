@@ -67,6 +67,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-uglify");
     grunt.loadNpmTasks("grunt-replace");
 
-    // Default task.
+    // Default tasks.
     grunt.registerTask("default", ["concat", "replace", "uglify"]);
 };
