@@ -29,6 +29,8 @@ Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
 
     Route::resource('tasks', TasksController::class);
+    Route::put('tasks/complete/{id}', [TasksController::class, 'complete'])->name('tasks.complete');
+    Route::put('tasks/updateStatus/{id}/{status}', [TasksController::class, 'updateStatus'])->name('tasks.updateStatus');
 
     // Comments
     Route::post('{task}/comments', [CommentsController::class, 'store'])->name('comments.store');

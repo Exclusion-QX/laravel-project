@@ -12,10 +12,7 @@
                 </div>
             </div>
             @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-                    <h4><i class="fa fa-check"></i>{{ session('success') }}</h4>
-                </div>
+                <x-status.success />
             @endif
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -34,7 +31,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-12 order-1 order-md-1">
+                    <div class="col-12 col-md-12 col-lg-8 order-1 order-md-1">
                         <h3 class="text-primary">{{ $task['title'] }}</h3>
                         <p class="text-muted">{{ $task['description'] }}</p>
                         <br>
@@ -43,9 +40,30 @@
                                 <b class="d-block">{{ $task['created_at'] }}</b>
                             </p>
                         </div>
-                        <div class="text-center mt-5 mb-3">
-                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
-                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-5 order-1 order-md-1">
+                        <div class="mt-5 mb-3">
+                            <a href="{{ route('tasks.edit', $task['id']) }}" class="btn btn-sm btn-secondary">Редактировать</a>
+                            <form action="{{ route('tasks.updateStatus', [$task['id'], 'В работе']) }}" method="POST" style="display:inline-block">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-sm btn-primary">В работе</button>
+                            </form>
+                            <form action="{{ route('tasks.updateStatus', [$task['id'], 'Завершена']) }}" method="POST" style="display:inline-block">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-sm btn-success">Завершить</button>
+                            </form>
+                            <form action="{{ route('tasks.destroy', $task['id']) }}" method="POST" style="display:inline-block">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-3 order-1 order-md-1 text-right" style="display: inline-block;">
+                        <div class="mt-5 mb-3">
+                        <h4>{{ $task['status'] }}</h4>
                         </div>
                     </div>
 
@@ -58,7 +76,7 @@
                                           placeholder="Написать комментарий..."></textarea>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Отправить</button>
+                                <button type="submit" class="btn btn-dark">Отправить</button>
                             </div>
                     </form>
                     </div>

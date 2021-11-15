@@ -141,6 +141,24 @@ class TasksController extends Controller
         $task = Task::where('id', $id)->first();
         $task->delete();
 
-        return redirect()->back()->withSuccess('Задача удалена');
+        return redirect()->route('tasks.index')->withSuccess('Задача удалена');
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $task = Task::find($id);
+        $task->status = $status;
+        if ($task->save()) {
+            return redirect()->back()->withSuccess('Статус задачи изменен');
+        }
+    }
+
+    public function complete($id)
+    {
+        $task = Task::find($id);
+        $task->status = 'Завершена';
+        if ($task->save()) {
+            return redirect()->back()->withSuccess('Задача завершена');
+        }
     }
 }
