@@ -65,7 +65,7 @@
 {{--                                        </div>--}}
                                         <div class="form-group">
                                             <label for="exampleInputBorder">Плановое завершение задачиние</label>
-                                            <input type="text" class="form-control form-control-border"
+                                            <input type="date" class="form-control form-control-border"
                                                    name="deadline" id="exampleInputBorder"
                                                    placeholder="2021-01-30 00:00:00">
                                         </div>

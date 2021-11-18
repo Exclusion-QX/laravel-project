@@ -170,6 +170,23 @@
                     <i class="fas fa-th-large"></i>
                 </a>
             </li>
+            <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+            </li>
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -279,7 +296,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('tasks.create') }}" class="nav-link">
+                                <a href="{{ route('finances.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Доступные средства</p>
                                 </a>

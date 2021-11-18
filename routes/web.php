@@ -17,16 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
+//Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('test', [App\Http\Controllers\Admin\HomeController::class, 'test']);
     Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index']);
 
@@ -40,11 +36,11 @@ Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
 //    Route::put('/comments/{comment}', [CommentsController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 
-    //finances
+    // finances
     Route::get('finances', [FinanceController::class, 'index'])->name('finances.index');
     Route::post('finances', [FinanceController::class, 'store'])->name('finances.store');
 
-    //expenses
+    // expenses
     Route::post('expenses', [ExpenseController::class, 'store'])->name('expenses.store');
 
 });
