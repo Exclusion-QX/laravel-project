@@ -263,6 +263,29 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item menu-open">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-money-bill"></i>
+                            <p>
+                                Финансы
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('finances.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Затраты</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tasks.create') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Доступные средства</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item">
                         <a href="pages/widgets.html" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
@@ -929,5 +952,9 @@
 <script src="/admin/dist/js/pages/dashboard.js"></script>
 
 <script src="/admin/dist/js/task.js"></script>
+<script src="/admin/dist/js/charts.js"></script>
+
+@yield('scripts')
+
 </body>
 </html>

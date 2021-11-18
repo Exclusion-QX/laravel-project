@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\FinanceController;
 use App\Http\Controllers\Admin\TasksController;
 use App\Http\Controllers\Admin\CommentsController;
+use App\Http\Controllers\Admin\ExpenseController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +39,13 @@ Route::middleware(['role:admin'])->prefix('admin-panel')->group(function () {
 //    Route::get('/comments/{comment}/edit', [CommentsController::class, 'edit'])->name('comments.edit');
 //    Route::put('/comments/{comment}', [CommentsController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [CommentsController::class, 'destroy'])->name('comments.destroy');
+
+    //finances
+    Route::get('finances', [FinanceController::class, 'index'])->name('finances.index');
+    Route::post('finances', [FinanceController::class, 'store'])->name('finances.store');
+
+    //expenses
+    Route::post('expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+
 });
 
