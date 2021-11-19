@@ -8,3 +8,7 @@
     text-overflow: ellipsis;
     width: 250px;
 }
+
+.progress-bar-moneybox {
+    border-radius: 10px;
+}

@@ -26,7 +26,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="/admin/plugins/summernote/summernote-bs4.min.css">
     <!-- Styles -->
-{{--    <link href="{{ asset('css/admin-panel.css') }}" rel="stylesheet">--}}
+    <link rel="stylesheet" href="/admin/admin-panel.css">
+    {{--    <link href="{{ asset('css/admin-panel.css') }}" rel="stylesheet">--}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -299,6 +300,12 @@
                                 <a href="{{ route('finances.index') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Доступные средства</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('moneybox.index') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Копилка</p>
                                 </a>
                             </li>
                         </ul>

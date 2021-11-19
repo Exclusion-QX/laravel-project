@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FinanceRequest;
 use App\Models\Expense;
 use App\Models\Finance;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FinanceController extends Controller

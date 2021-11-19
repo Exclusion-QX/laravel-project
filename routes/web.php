@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\FinanceController;
+use App\Http\Controllers\Admin\MoneyboxController;
 use App\Http\Controllers\Admin\TasksController;
 use App\Http\Controllers\Admin\CommentsController;
 use App\Http\Controllers\Admin\ExpenseController;
@@ -42,6 +43,12 @@ Route::middleware('auth')->group(function () {
 
     // expenses
     Route::post('expenses', [ExpenseController::class, 'store'])->name('expenses.store');
+
+//     moneybox
+    Route::get('moneybox', [MoneyboxController::class, 'index'])->name('moneybox.index');
+    Route::post('moneybox', [MoneyboxController::class, 'store'])->name('moneybox.store');
+    Route::put('moneybox', [MoneyboxController::class, 'update'])->name('moneybox.update');
+    Route::delete('moneybox', [MoneyboxController::class, 'destroy'])->name('moneybox.destroy');
 
 });
 
